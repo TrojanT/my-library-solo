@@ -1,0 +1,52 @@
+@import "variables";
+.author-section {
+  h2 {
+    font-size: 2.7em;
+    font-weight: 500;
+    color: $h2-color;
+    border-bottom: 2px solid $h2-color;
+  }
+
+  .empty-label {
+    font-style: italic;
+    font-size: 1.2em;
+  }
+
+  .author {
+    label {
+      font-size: 1.4em;
+      font-weight: 500;
+    }
+
+    .icon {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $item-hover-bg;
+
+      .icon {
+        display: flex;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .add-author {
+    cursor: pointer;
+
+    .feather-plus {
+      width: 30px;
+      height: 30px;
+      stroke: #104a99;
+    }
+
+    label {
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1.2em;
+    }
+  }
+}
