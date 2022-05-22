@@ -9,3 +9,21 @@
     height: auto;
   }
 }
+
+@media only screen and (max-width: 667px) {
+  .welcome {
+    h1 {
+      font-weight: 700;
+      font-size: 2.2em;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .credits {
+    font-size: 0.8em;
+  }
+}
