@@ -8,6 +8,7 @@ type AuthorListProps = {
 }
 
 const AuthorList: React.FC<AuthorListProps> = (props: AuthorListProps) => {
+
     const initAuthors: IAuthor[] = [
         {name: 'Author 1'},
         {name: 'Author 2'},
