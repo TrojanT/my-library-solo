@@ -3,7 +3,12 @@ import {Col} from "react-bootstrap";
 import Author from "./Author";
 import {IAuthor} from "../../types/libraryTypes";
 
-const AuthorList: React.FC = () => {
+type AuthorListProps = {
+    onDeleteClick: (index: number) => void
+}
+
+const AuthorList: React.FC<AuthorListProps> = (props: AuthorListProps) => {
+
     const initAuthors: IAuthor[] = [
         {name: 'Author 1'},
         {name: 'Author 2'},
@@ -13,8 +18,8 @@ const AuthorList: React.FC = () => {
     const [authors] = useState(initAuthors);
 
     const renderAuthors = () => {
-      return authors.map((author: IAuthor,index: number) =>
-          <li className='author py-2' key={index}><Author num={index+1} authorName={author.name}/></li>);
+        return authors.map((author: IAuthor,index: number) =>
+            <li className='author py-2' key={index}><Author num={index+1} authorName={author.name} onDeleteClick={props.onDeleteClick}/></li>);
     }
 
     return (
