@@ -49,4 +49,38 @@
       font-size: 1.2em;
     }
   }
+
+  .author-form {
+    h3 {
+      color: $h3-color;
+      font-size: 1.5em;
+      font-weight: 500;
+      border-bottom: 2px solid $h3-color;
+      display: inline-block;
+    }
+
+    .x-circle {
+      font-size: 1.2em;
+      stroke: #181818;
+      cursor: pointer;
+      width: 27px;
+      height: 27px;
+    }
+
+    .form-label {
+      font-size: .8em;
+    }
+
+    .form-control {
+      border-radius: if($rounded-corners, 5px, 0px);
+      border: 2px solid $input-border-color;
+    }
+
+    .btn {
+      border-radius: 6px;
+      padding: 4px 26px;
+      background-color: $click-create-btn-color;
+      font-weight: 500;
+    }
+  }
 }
