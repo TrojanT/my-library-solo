@@ -1,6 +1,7 @@
 @import "variables";
+
 @media only screen and (max-width: 720px) {
-  .author {
+  .book {
     .icon {
       display: flex !important;
     }
@@ -8,22 +9,12 @@
     label {
       font-size: 1.4em;
       font-weight: 500;
-    }
-  }
-  .author-form {
-
-    .x-circle {
-      font-size: 1.2em;
-      stroke: #181818;
-      cursor: pointer;
-      width: 27px;
-      height: 27px;
     }
   }
 }
 
 @media only screen and (max-width: 1180px) {
-  .author {
+  .book {
     .icon {
       display: flex !important;
     }
@@ -33,19 +24,8 @@
       font-weight: 500;
     }
   }
-  .author-form {
-
-    .x-circle {
-      font-size: 1.2em;
-      stroke: #181818;
-      cursor: pointer;
-      width: 27px;
-      height: 27px;
-    }
-  }
 }
-
-.author-section {
+.book-section {
   h2 {
     font-size: 2.7em;
     font-weight: 500;
@@ -58,7 +38,7 @@
     font-size: 1.2em;
   }
 
-  .author {
+  .book {
     label {
       font-size: 1.4em;
       font-weight: 500;
@@ -80,7 +60,7 @@
 
   }
 
-  .add-author {
+  .add-book {
     cursor: pointer;
 
     .feather-plus {
@@ -96,7 +76,7 @@
     }
   }
 
-  .author-form {
+  .book-form {
     h3 {
       color: $h3-color;
       font-size: 1.5em;
