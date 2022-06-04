@@ -59,7 +59,7 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
     }
 
     return (
-        <Col xs={9} className='author-form mt-2 pb-4'>
+        <Col xl={9} md={11} xs={12} className='author-form mt-2 pb-4'>
             <Row>
                 <Col xs={12} className="alert">
                     {Message && <Row> {Message} </Row>}
@@ -72,7 +72,7 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
                     <XCircle className="x-circle" onClick={props.onCloseClick}/>
                 </Col>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Col xs={{span: 11, offset: 1}}>
+                    <Col md={{span: 11, offset: 1}} xs={{span: 12, offset: 0}}>
 
                             <Form.Group className="mt-3 mb-4" controlId="formBasicAuthorName">
                                 <Form.Label>Name of Author</Form.Label>

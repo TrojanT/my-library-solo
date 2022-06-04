@@ -108,5 +108,10 @@
       background-color: $click-create-btn-color;
       font-weight: 500;
     }
+
+    .err-msg {
+      color: red;
+      font-size: 0.90em;
+    }
   }
 }
