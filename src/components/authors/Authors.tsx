@@ -7,7 +7,11 @@ import Swal from "sweetalert2";
 import AuthorForm from "./AuthorForm";
 import {IAuthor} from "../../types/libraryTypes";
 
-const Authors: React.FC = () => {
+type AuthorsProps = {
+    authorArrayToSelect: (authors: IAuthor[]) => void
+}
+
+const Authors: React.FC<AuthorsProps> = (props) => {
 
     const [authors, setAuthors] = useState<IAuthor[] | null>(null);
     const [isFormVisible, setIsFormVisible] = useState(false);
@@ -28,6 +32,7 @@ const Authors: React.FC = () => {
         const allAuthors: IAuthor[] = authors ? authors.slice() : [];
         allAuthors.push(newAuthor);
         setAuthors(allAuthors);
+        props.authorArrayToSelect(allAuthors);
     }
 
     const handleOnDeleteAuthorClick = (index: number) => {
