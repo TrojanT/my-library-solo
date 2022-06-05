@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from "react";
+import React, {FormEvent, useEffect, useState} from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {XCircle} from "react-feather";
 import {IAuthor, IBook, SelectAuthorOption} from "../../types/libraryTypes";
@@ -9,11 +9,15 @@ type BookFormProps = {
     onBookCreated: (newBook: IBook) => void
     onCloseClick: () => void
     selectAuthorNameArray: SelectAuthorOption[]
+    bookToUpdate: IBook | null
+    onBookUpdated: (updatedBook: IBook) => void
 }
 const BookForm: React.FC<BookFormProps> = (props) => {
     const {selectAuthorNameArray} = props;
+    const {bookToUpdate} = props;
 
     const [validated, setValidated] = useState(false);
+    const [Message, setMessage] = useState<string | null>(null);
     const [bookName, setBookName] = useState<string | null>(null)
     const [bookPrice, setBookPrice] = useState<string | null>(null)
     const [bookAuthor, setBookAuthor] = useState<IAuthor | null>(null);
@@ -36,6 +40,19 @@ const BookForm: React.FC<BookFormProps> = (props) => {
         })
     }
 
+    useEffect(() => {
+        if (!bookToUpdate) {
+            setBookName(null);
+            setBookPrice(null);
+            setBookAuthor(null);
+            return;
+        }
+        setBookName(bookToUpdate.title);
+        setBookPrice(bookToUpdate.price);
+        setBookAuthor(bookToUpdate.author);
+
+    }, [bookToUpdate]);
+
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
         if (!bookName) {
@@ -49,11 +66,35 @@ const BookForm: React.FC<BookFormProps> = (props) => {
         }
 
         if (bookName && bookPrice && bookAuthor) {
+            if (bookToUpdate) {
+                const updatedBook: IBook = {
+                    ...bookToUpdate,
+                    title: bookName,
+                    price: bookPrice,
+                    author: bookAuthor
+                };
+                props.onBookUpdated(updatedBook);
+                setBookName(null);
+                setBookPrice(null);
+                setBookAuthor(null);
+                setMessage("Book updated successfully !")
+                setTimeout(() => {
+                    setMessage(null);
+                }, 1800)
+                return;
+            }
 
             const book: IBook = {title: bookName, price: bookPrice, author: bookAuthor};
             props.onBookCreated(book);
+            setMessage("Book added successfully !")
+            setBookName(null);
+            setTimeout(() => {
+                setMessage(null);
+            }, 1800);
 
             setBookName(null);
+            setBookPrice(null);
+            setBookAuthor(null);
         }
     }
 
@@ -74,8 +115,11 @@ const BookForm: React.FC<BookFormProps> = (props) => {
     return (
         <Col xl={9} md={11} xs={12} className='book-form mt-2 pb-4'>
             <Row>
+                <Col xs={12} className="alert">
+                    {Message && <Row> {Message} </Row>}
+                </Col>
                 <Col xs={10}>
-                    <h3>Create Book</h3>
+                    <h3>{bookToUpdate ? 'Update' : 'Create'} Book</h3>
                 </Col>
                 <Col xs={2} className='d-flex align-items-center justify-content-end'>
                     <XCircle className="x-circle" onClick={props.onCloseClick}/>
@@ -132,7 +176,7 @@ const BookForm: React.FC<BookFormProps> = (props) => {
                         </Form.Group>
 
                         <Col xs={12} className='text-end mt-2'>
-                            <Button type="submit">Create</Button>
+                            <Button type="submit">{bookToUpdate ? 'Update' : 'Create'}</Button>
                         </Col>
                     </Col>
                 </Form>
