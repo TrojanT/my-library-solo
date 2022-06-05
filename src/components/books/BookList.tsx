@@ -5,6 +5,8 @@ import Book from "./Book";
 
 type BookListProps = {
     books: IBook[] | null
+    onDeleteClick: (index: number) => void
+    onUpdateClick: (index: number) => void
 }
 const BookList: React.FC<BookListProps> = (props) => {
 
@@ -16,7 +18,9 @@ const BookList: React.FC<BookListProps> = (props) => {
         }
 
         return books.map((book: IBook,index: number) =>
-            <li className='book py-2' key={index}><Book num={index+1} bookName={book.title}/></li>);
+            <li className='book py-2' key={index}><Book num={index+1} bookName={book.title}
+                                                        onDeleteClick={props.onDeleteClick}
+                                                        onBookUpdateClick={props.onUpdateClick}/></li>);
     }
 
     return (
