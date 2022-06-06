@@ -67,7 +67,6 @@ const Books: React.FC<BookProps> = (props) => {
         const allBooks: IBook[] = books.slice();
         allBooks.splice(bookIndexToUpdate, 1, updatedBook);
         setBooks(allBooks);
-
     }
 
     const handleBookUpdateClick = (index: number) => {

@@ -18,8 +18,6 @@ const BookForm: React.FC<BookFormProps> = (props) => {
 
     const [validated, setValidated] = useState(false);
     const [Message, setMessage] = useState<string | null>(null);
-    const [upIndex, setUpIndex] = useState<number>(0);
-
     const [bookName, setBookName] = useState<string | null>(null)
     const [bookPrice, setBookPrice] = useState<string | null>(null)
     const [bookAuthor, setBookAuthor] = useState<IAuthor | null>(null);
