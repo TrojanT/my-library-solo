@@ -26,6 +26,7 @@ const BookForm: React.FC<BookFormProps> = (props) => {
     const [errBookPrice, setErrBookPrice] = useState(false);
     const [errBookAuthor, setErrBookAuthor] = useState(false);
     const prefix = 'Rs.'
+    let index: number = 0;
 
     const customStyles = {
         control: (base: any) => ({
@@ -47,6 +48,7 @@ const BookForm: React.FC<BookFormProps> = (props) => {
             setBookAuthor(null);
             return;
         }
+        index = (selectAuthorNameArray.findIndex(value => value.value === bookToUpdate.author ));
         setBookName(bookToUpdate.title);
         setBookPrice(bookToUpdate.price);
         setBookAuthor(bookToUpdate.author);
@@ -163,12 +165,11 @@ const BookForm: React.FC<BookFormProps> = (props) => {
                         <Form.Group controlId="formBasicAuthorName">
                             <Form.Label className='form-label mt-3'>Author</Form.Label>
                             <Select
-
+                                defaultValue={selectAuthorNameArray[index]}
                                 styles={customStyles}
                                 isClearable
                                 options={selectAuthorNameArray}
                                 onChange={(val) => handleBookAuthorChange(val)}
-                                // onFocus={() => setErrBookAuthor(false)}
                             />
                             {
                                 errBookAuthor ? <label className='err-msg'>Book Author is required.</label> : ""

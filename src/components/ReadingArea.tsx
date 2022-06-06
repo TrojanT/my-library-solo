@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import Authors from "../components/authors/Authors";
 import Books from "./books/Books";
@@ -6,14 +6,24 @@ import {IAuthor, SelectAuthorOption} from "../types/libraryTypes";
 
 const ReadingArea: React.FC = () => {
     const [authorSelectOptions, setAuthorSelectOptions] = useState<SelectAuthorOption[] | null>(null)
+    const [authorsList, setAuthorsList] = useState<IAuthor[] | null>(null);
 
     const authorArrayToSelect = (authors: IAuthor[]) => {
-        for (let i = 0; i < authors.length; i++) {
-            const authorOptions: SelectAuthorOption[] = authorSelectOptions ? authorSelectOptions.slice() : [];
-            authorOptions.push({value: authors[i], label: authors[i].name});
+        setAuthorsList(authors);
+    }
+
+    useEffect(() =>{
+        if (!authorsList) {
+            return;
+        }
+
+        const authorOptions: SelectAuthorOption[] = authorSelectOptions ? authorSelectOptions.slice() : [];
+        authorOptions.splice(0,authorOptions.length)
+        for (let i = 0; i < authorsList.length; i++) {
+            authorOptions.push({value: authorsList[i], label: authorsList[i].name});
             setAuthorSelectOptions(authorOptions);
         }
-    }
+    }, [authorsList]);
 
     return (
         <Container fluid>

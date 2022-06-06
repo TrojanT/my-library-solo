@@ -53,6 +53,7 @@ const Authors: React.FC<AuthorsProps> = (props) => {
                 const allAuthors: IAuthor[] = authors.slice();
                 allAuthors.splice(index, 1);
                 setAuthors(allAuthors);
+                props.authorArrayToSelect(allAuthors);
                 Swal.fire(
                     'Deleted!',
                     'Author has been deleted successfully.',
@@ -69,6 +70,7 @@ const Authors: React.FC<AuthorsProps> = (props) => {
         const allAuthors: IAuthor[] = authors.slice();
         allAuthors.splice(authorIndexToUpdate,1,updatedAuthor);
         setAuthors(allAuthors);
+        props.authorArrayToSelect(allAuthors);
     }
 
     const handleAuthorUpdateClick = (index: number) => {

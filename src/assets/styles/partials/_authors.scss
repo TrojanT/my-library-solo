@@ -1,49 +1,5 @@
 @import "variables";
-@media only screen and (max-width: 720px) {
-  .author {
-    .icon {
-      display: flex !important;
-    }
 
-    label {
-      font-size: 1.4em;
-      font-weight: 500;
-    }
-  }
-  .author-form {
-
-    .x-circle {
-      font-size: 1.2em;
-      stroke: #181818;
-      cursor: pointer;
-      width: 27px;
-      height: 27px;
-    }
-  }
-}
-
-@media only screen and (max-width: 1180px) {
-  .author {
-    .icon {
-      display: flex !important;
-    }
-
-    label {
-      font-size: 1.4em;
-      font-weight: 500;
-    }
-  }
-  .author-form {
-
-    .x-circle {
-      font-size: 1.2em;
-      stroke: #181818;
-      cursor: pointer;
-      width: 27px;
-      height: 27px;
-    }
-  }
-}
 
 .author-section {
   h2 {
@@ -133,6 +89,57 @@
       color: green;
       font-size: 1.5em;
       font-weight: bold;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .author-section {
+    h2 {
+      font-size: 2em;
+    }
+    .author {
+      .icon {
+        display: flex !important;
+      }
+
+      label {
+        font-size: 1.4em;
+        font-weight: 500;
+      }
+    }
+
+    .author-form {
+
+      .x-circle {
+        font-size: 1.2em;
+        stroke: #181818;
+        cursor: pointer;
+        width: 27px;
+        height: 27px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1180px) {
+  .author {
+    .icon {
+      display: flex !important;
+    }
+
+    label {
+      font-size: 1.4em;
+      font-weight: 500;
+    }
+  }
+  .author-form {
+
+    .x-circle {
+      font-size: 1.2em;
+      stroke: #181818;
+      cursor: pointer;
+      width: 27px;
+      height: 27px;
     }
   }
 }
