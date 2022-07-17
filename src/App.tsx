@@ -1,11 +1,11 @@
 import React from 'react';
 import './assets/styles/main.scss';
-import Library from "./view/Library";
+import Routing from "./components/Routing";
 
 function App() {
-  return (
-    <Library/>
-  );
+    return (
+        <Routing/>
+    );
 }
 
 export default App;
